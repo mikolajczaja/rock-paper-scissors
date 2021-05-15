@@ -12,7 +12,11 @@ import lombok.ToString;
 public class Player {
 	private final GameStrategy gameStrategy;
 
-	protected Move move(){
+	/**
+	 * Selects a {@link Move} according to players strategy.
+	 * @return selected {@link Move}
+	 */
+	protected Move move() {
 		return gameStrategy.getMove().execute();
 	}
 }

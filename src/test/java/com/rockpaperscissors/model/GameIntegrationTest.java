@@ -24,6 +24,11 @@ public class GameIntegrationTest {
 	private final GameStrategy randomStrategyMock = GameStrategy.RANDOM;
 	private int counter = 0;
 
+	@DataProvider(name = "nonRandomGameStrategyValues")
+	private static Object[] nonRandomGameStrategyValues() {
+		return new GameStrategy[]{GameStrategy.ROCK_ONLY, GameStrategy.PAPER_ONLY, GameStrategy.SCISSORS_ONLY};
+	}
+
 	@BeforeTest
 	void mockitoInit() {
 		MockitoAnnotations.openMocks(this);
@@ -60,10 +65,5 @@ public class GameIntegrationTest {
 		Game game = new Game(applicationConfig);
 		var resultsWithNumbersOfOccurrences = game.play();
 		assertThat(resultsWithNumbersOfOccurrences).containsExactly(entry(GameRoundResult.DRAW, 100L));
-	}
-
-	@DataProvider(name = "nonRandomGameStrategyValues")
-	private static Object[] nonRandomGameStrategyValues() {
-		return new GameStrategy[]{GameStrategy.ROCK_ONLY, GameStrategy.PAPER_ONLY, GameStrategy.SCISSORS_ONLY};
 	}
 }

@@ -1,5 +1,6 @@
 package com.rockpaperscissors.app;
 
+import com.rockpaperscissors.model.Game;
 import com.rockpaperscissors.model.GameRoundResult;
 
 import java.util.Map;
@@ -16,6 +17,9 @@ public class ResultSummarizer {
 	private final long drawsCount;
 	private final long roundsCount;
 
+	/**
+	 * @param resultsWithNumbersOfOccurrences results map from {@link Game#play()}
+	 */
 	protected ResultSummarizer(Map<GameRoundResult, Long> resultsWithNumbersOfOccurrences) {
 		this.playerOneWinsCount = getValueByKeyOrDefaultValueIfNotExists(GameRoundResult.PLAYER_ONE_WON,
 				resultsWithNumbersOfOccurrences);
@@ -38,8 +42,9 @@ public class ResultSummarizer {
 	}
 
 	/**
-	 * Returns summary of results, line determining winner of the game always contains score in format like
-	 * <b>(21-13)</b> or <b>(13-321)</b> with <b>left side for player one</b> and <b>right side for player two</b>
+	 * @return summary of results: lines stating numbers of occurrences of each {@link GameRoundResult} and a line
+	 * determining winner of the game always contains score in format like <b>(21-13)</b> or <b>(13-321)</b> with
+	 * <b>left side for player one</b> and <b>right side for player two</b>
 	 */
 	protected String summarize() {
 		var stringJoiner = new StringJoiner("\n");

@@ -8,7 +8,7 @@ public class AppRunnerIntegrationTest {
 	 * For sake of coverage :)
 	 */
 	@Test
-	void testMainMethod(){
+	void testMainMethod() {
 		AppRunner.main(new String[]{});
 	}
 }

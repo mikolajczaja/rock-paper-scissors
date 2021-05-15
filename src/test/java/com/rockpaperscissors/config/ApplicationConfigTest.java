@@ -1,15 +1,14 @@
 package com.rockpaperscissors.config;
 
 import com.rockpaperscissors.model.GameStrategy;
-import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class ApplicationConfigTest {
 
 	@Test
-	void shouldReturnDefaultValuesWhenPropertiesFileNameIsInvalid(){
+	void shouldReturnDefaultValuesWhenPropertiesFileNameIsInvalid() {
 		DefaultApplicationProperties defaultApplicationProperties = new DefaultApplicationProperties(100,
 				GameStrategy.ROCK_ONLY, GameStrategy.PAPER_ONLY);
 
@@ -17,12 +16,14 @@ public class ApplicationConfigTest {
 		applicationConfig.initialize();
 
 		assertThat(applicationConfig.getNumberOfRounds()).isEqualTo(defaultApplicationProperties.getNumberOfRounds());
-		assertThat(applicationConfig.getPlayerOneStrategy()).isEqualTo(defaultApplicationProperties.getPlayerOneStrategy());
-		assertThat(applicationConfig.getPlayerTwoStrategy()).isEqualTo(defaultApplicationProperties.getPlayerTwoStrategy());
+		assertThat(applicationConfig.getPlayerOneStrategy()).isEqualTo(
+				defaultApplicationProperties.getPlayerOneStrategy());
+		assertThat(applicationConfig.getPlayerTwoStrategy()).isEqualTo(
+				defaultApplicationProperties.getPlayerTwoStrategy());
 	}
 
 	@Test
-	void shouldReturnCorrectValuesWhenPropertiesFileIsValid(){
+	void shouldReturnCorrectValuesWhenPropertiesFileIsValid() {
 		DefaultApplicationProperties defaultApplicationProperties = new DefaultApplicationProperties(100,
 				GameStrategy.ROCK_ONLY, GameStrategy.PAPER_ONLY);
 
@@ -49,6 +50,7 @@ public class ApplicationConfigTest {
 
 		assertThat(applicationConfig.getNumberOfRounds()).isEqualTo(expectedNumberOfRounds);
 		assertThat(applicationConfig.getPlayerOneStrategy()).isEqualTo(expectedPlayerOneStrategy);
-		assertThat(applicationConfig.getPlayerTwoStrategy()).isEqualTo(defaultApplicationProperties.getPlayerTwoStrategy());
+		assertThat(applicationConfig.getPlayerTwoStrategy()).isEqualTo(
+				defaultApplicationProperties.getPlayerTwoStrategy());
 	}
 }

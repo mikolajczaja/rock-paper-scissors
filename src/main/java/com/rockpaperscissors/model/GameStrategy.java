@@ -21,8 +21,8 @@ public enum GameStrategy {
 	private final MoveSelector move;
 
 	/**
-	 * @return Optional of {@link GameStrategy} with name equal to parameter.
-	 * <br> Empty Optional if {@link GameStrategy} with specified name does not exist.
+	 * @return Optional of GameStrategy with name equal to parameter.
+	 * <br> Empty Optional if GameStrategy with specified name does not exist.
 	 */
 	public static Optional<GameStrategy> getGameStrategyWithName(String name) {
 		return Arrays.stream(values()).filter(strategy -> strategy.name.equals(name)).findAny();
